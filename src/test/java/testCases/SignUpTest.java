@@ -12,6 +12,7 @@ public class SignUpTest extends BaseTest  {
     @Test(priority = 1)
     public void createAccountTest() {
         HomePage home = new HomePage(driver);
+        home.clickSignIn();
         home.clickCreateAccount();
 
         CreateAccountPage createAccount = new CreateAccountPage(driver);
