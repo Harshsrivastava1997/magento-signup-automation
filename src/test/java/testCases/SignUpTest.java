@@ -3,6 +3,7 @@ import org.testng.annotations.Test;
 import pageObjects.CreateAccountPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.PasswordChange;
 import testBase.BaseTest;
 
 public class SignUpTest extends BaseTest  {
@@ -32,6 +33,23 @@ public class SignUpTest extends BaseTest  {
         LoginPage login = new LoginPage(driver);
         login.login(email, password);
     }
+
+        @Test(priority = 3)
+                public void password_change() throws InterruptedException{
+        Thread.sleep(3000);
+                   HomePage hp = new HomePage(driver);
+                   hp. changepasword();
+
+                   PasswordChange pc = new PasswordChange(driver);
+                   pc.password_change();
+
+            //Again login with new password
+            LoginPage lp = new LoginPage(driver);
+            lp.login( email,  "Harsh@12345");
+
+            System.out.println("Password change and re-login with new password successful");
+        }
+
 }
 
 

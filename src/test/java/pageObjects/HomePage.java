@@ -9,14 +9,16 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-       @FindBy (linkText="Create an Account")
-       WebElement createAccountLink;
-      @FindBy(linkText="Sign In")
-      WebElement signInLink;
+    @FindBy (linkText="Create an Account")
+    WebElement createAccountLink;
+    @FindBy(linkText="Sign In")
+    WebElement signInLink;
     @FindBy(css = ".customer-welcome > .customer-name")
     WebElement accountDropdown;
     @FindBy(linkText = "Sign Out")
     WebElement signOutLink;
+    @FindBy(xpath="//a[@class='action change-password']")
+    WebElement changePasswordLink;
 
 
     public void clickCreateAccount() {
@@ -32,5 +34,8 @@ public class HomePage extends BasePage {
         Thread.sleep(2000);
         signOutLink.click();
     }
+    public void changepasword(){
+        changePasswordLink.click();
+     }
 }
 

@@ -2,6 +2,10 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CreateAccountPage extends BasePage {
 
@@ -26,11 +30,14 @@ public class CreateAccountPage extends BasePage {
 
 
     public void registerUser(String fName, String lName, String emailAddr, String pwd) {
-        firstName.sendKeys(fName);
-        lastName.sendKeys(lName);
-        email.sendKeys(emailAddr);
-        password.sendKeys(pwd);
-        confirmPassword.sendKeys(pwd);
-        createAccountButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.visibilityOf(firstName)).sendKeys(fName);
+        wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(lName);
+        wait.until(ExpectedConditions.visibilityOf(email)).sendKeys(emailAddr);
+        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(pwd);
+        wait.until(ExpectedConditions.visibilityOf(confirmPassword)).sendKeys(pwd);
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton)).click();
     }
 }
+
